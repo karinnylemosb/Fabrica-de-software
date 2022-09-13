@@ -53,3 +53,14 @@ for (let objeto of dados) {
 
   elementoH1.insertAdjacentElement('afterend', elementArticle);
 }
+
+//Botão
+const btn = document.querySelector('.btn-azul');
+btn.addEventListener('click', () => {
+  let articles = document.querySelectorAll('article');
+  for (let i = 0; i < articles.length; i++) {
+    articles[i].remove();
+  }
+});
+
+//
