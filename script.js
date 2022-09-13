@@ -29,13 +29,27 @@ let dados = [
     email: 'Lucio_Hettinger@annie.ca',
     image: 'https://robohash.org/5?set=set2',
   },
+  {
+    id: 6,
+    name: 'Kaban Loper',
+    email: 'gragner_r@annie.ca',
+    image: 'https://robohash.org/F8K.png?set=set1',
+  },
 ];
 
 const elementoH1 = document.querySelector('h1');
-const elementArticle = document.createElement('article');
-elementArticle.classList.add('monstros');
 
-elementArticle.innerHTML = `<img src="https://images-ext-2.discordapp.net/external/JIFruA9tz7ltiJj74n45aA1Pl9Z8BaU2CJY9PB9ZxEk/%3Fset%3Dset2/https/robohash.org/5" alt="Monstrinho">
-<div><h2> Nome</h2><p> E-mail</p></div>`;
+for (let objeto of dados) {
+  const elementArticle = document.createElement('article');
 
-elementoH1.insertAdjacentElement('afterend', elementArticle);
+  elementArticle.classList.add('monstros');
+
+  elementArticle.innerHTML = `
+  <img src="${objeto.image}" alt="Monstrinho">
+    <div>
+      <h2> ${objeto.name}</h2>
+      <p> ${objeto.email}</p>
+    </div>  `;
+
+  elementoH1.insertAdjacentElement('afterend', elementArticle);
+}
