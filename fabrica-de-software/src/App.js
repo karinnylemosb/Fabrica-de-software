@@ -22,7 +22,8 @@ function App() {
         <ListaMonstros dados={dados} />
 
         <button className="btn-azul" type="button" onClick={apagarDados}>
-          limpar monstros
+          {' '}
+          Limpar monstros
         </button>
       </section>
     </main>
