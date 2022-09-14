@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import dados from './dados/dadosFake';
 
 function App() {
+  const [dadosFake, setdadosFake] = useState(dados); //Setdados sempre zera tudo, por isso foi usado no botão apagar
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <main>
+      <section className="container">
+        <h1> Monstros</h1>
+
+        {dadosFake.map((objeto) => {
+          return (
+            <article className="monstros">
+              <img src={objeto.image} alt="imagem"></img>
+
+              <div>
+                <h2> {objeto.name}</h2>
+                <p> {objeto.email}</p>
+              </div>
+            </article>
+          );
+        })}
+
+        <button
+          type="button"
+          className="btn-azul"
+          onClick={() => {
+            setdadosFake([]);
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {' '}
+          Limpar monstros{' '}
+        </button>
+      </section>
+    </main>
   );
 }
 
