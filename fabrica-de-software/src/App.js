@@ -1,36 +1,28 @@
-import { useState } from 'react';
-import dados from './dados/dadosFake';
+import { useEffect, useState } from 'react';
+import ListaMonstros from './componentes/ListaMonstros';
 
 function App() {
-  const [dadosFake, setdadosFake] = useState(dados); //Setdados sempre zera tudo, por isso foi usado no botão apagar
+  const [dados, setDados] = useState([]);
+
+  const apagarDados = () => {
+    setDados([]);
+  };
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((dadosAPI) => setDados(dadosAPI.slice(0, 5)));
+  }, []);
 
   return (
     <main>
       <section className="container">
-        <h1> Monstros</h1>
+        <h1>{dados.length} monstros</h1>
 
-        {dadosFake.map((objeto) => {
-          return (
-            <article className="monstros">
-              <img src={objeto.image} alt="imagem"></img>
+        <ListaMonstros dados={dados} />
 
-              <div>
-                <h2> {objeto.name}</h2>
-                <p> {objeto.email}</p>
-              </div>
-            </article>
-          );
-        })}
-
-        <button
-          type="button"
-          className="btn-azul"
-          onClick={() => {
-            setdadosFake([]);
-          }}
-        >
-          {' '}
-          Limpar monstros{' '}
+        <button className="btn-azul" type="button" onClick={apagarDados}>
+          limpar monstros
         </button>
       </section>
     </main>
