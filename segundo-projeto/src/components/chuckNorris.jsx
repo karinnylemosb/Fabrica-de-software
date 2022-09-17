@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-function ChuckNorris() {
-  const [Chuck, setChuck] = useState("Fact Chuck");
+const ChuckNorris = () => {
+  const [chuck, setChuck] = useState("Fact Chuck");
 
   useEffect(() => {
     getChuck();
@@ -9,6 +9,7 @@ function ChuckNorris() {
 
   const getChuck = async () => {
     const response = await fetch("https://api.chucknorris.io/jokes/random", {
+      method: "GET",
       headers: {
         Accept: "application/json",
       },
@@ -20,13 +21,12 @@ function ChuckNorris() {
   return (
     <div className="container">
       <h1>Chuck Norris Facts</h1>
-      <p className="chuck">{Chuck}</p>
-      <button type="button" className="btn"onClick={getChuck}>
+      <p className="joke">{chuck}</p>
+      <button type="button" className="btn" onClick={getChuck}>
         Get Another Fact
       </button>
     </div>
   );
 };
-
 
 export default ChuckNorris;

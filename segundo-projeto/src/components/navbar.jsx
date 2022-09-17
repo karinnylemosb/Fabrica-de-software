@@ -1,7 +1,4 @@
-import { Link } from "react-router-dom";
-import ChuckNorris from "./chuckNorris";
-import DadJoke from "./dadJoke";
-
+import { Link, Outlet } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -9,13 +6,15 @@ function Navbar() {
       <nav className="navbar">
         <ul>
           <li>
-            <Link to="/">Home Page</Link>
+            <Link to="/">Chuck Norris</Link>
           </li>
           <li>
-            <Link to="/dadJoke">Home Page</Link>
+            <Link to="/dadJoke">Dad Joke</Link>
           </li>
         </ul>
       </nav>
+
+      <Outlet />
     </>
   );
 }
